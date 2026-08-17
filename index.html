@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алиса Травмарама</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e2e2;
+            color: #1a1a1a;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- Навигация ----- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid #d0d0d0;
+            z-index: 100;
+            padding: 14px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: lowercase;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: lowercase;
+            letter-spacing: 0.02em;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: color 0.2s;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #1a1a1a;
+            transition: width 0.3s;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1a1a1a;
+            transition: 0.3s;
+        }
+
+        section {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3, h4,
+        .section-title,
+        .subhead,
+        .subhead2,
+        .about-statement h3,
+        .mediums-line,
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+        }
+        h2, .section-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-transform: lowercase;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        h4 {
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #666;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0.2rem;
+            font-weight: 300;
+        }
+        .subhead2 {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* ----- Главная ----- */
+        #traumara {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            text-align: center;
+            border-bottom: none;
+            background: transparent;
+        }
+        .hero-wrapper {
+            position: relative;
+            max-width: 1933px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .hero-wrapper img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            width: 90%;
+            pointer-events: none;
+        }
+        .hero-text h1 {
+            font-size: 7rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.6);
+            margin-bottom: 0;
+        }
+        .hero-sub {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .hero-sub .subhead {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.2rem;
+            font-weight: 300;
+        }
+        .hero-sub .subhead2 {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        /* ----- Обо мне ----- */
+        #about .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+        #about .bio-image {
+            display: flex;
+            justify-content: center;
+        }
+        #about .bio-image .portrait {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 3 / 4;
+            background: #d4d4d4;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        #about .bio-image .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        #about .bio-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #222;
+        }
+        #about .bio-text strong {
+            font-weight: 500;
+        }
+        .btn-catalog {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 10px 32px;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            transition: all 0.3s;
+            text-transform: lowercase;
+            background: rgba(255,255,255,0.5);
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-catalog:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        #portfolio-anchor {
+            scroll-margin-top: 80px;
+        }
+
+        .about-statement {
+            border-top: 1px solid #d0d0d0;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            background: rgba(255,255,255,0.6);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+        .about-statement h3 {
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+        }
+        .about-statement p {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mediums-line {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #333;
+            margin: 1.5rem 0 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #d0d0d0;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .about-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #d0d0d0;
+            background: rgba(255,255,255,0.6);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+        .about-info-grid h4 {
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .about-info-grid ul {
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #222;
+            font-family: 'Inter', sans-serif;
+        }
+        .about-info-grid ul li {
+            margin-bottom: 0.5rem;
+        }
+        .about-info-grid ul li .year {
+            font-weight: 400;
+            color: #555;
+            margin-right: 0.3rem;
+        }
+
+        /* ----- Каталог ----- */
+        #catalog {
+            background: transparent;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem 1.5rem;
+        }
+        .work-item {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .work-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .work-item .image-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #d4d4d4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .work-item .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .work-item.diptych .image-placeholder img {
+            object-fit: cover;
+        }
+        .work-item .info {
+            padding: 1rem 0.2rem 0.2rem;
+        }
+        .work-item .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .work-item .details {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
+        .work-item .price {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            margin-top: 0.3rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ----- Модальное окно ----- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #ffffff;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #888;
+            transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: #1a1a1a;
+        }
+        .modal-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #d4d4d4;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .modal-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .modal-details {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        .modal-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Форма заказа */
+        .order-form {
+            border-top: 1px solid #d0d0d0;
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+        .order-form h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .order-form label {
+            display: block;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+        .order-form input,
+        .order-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: #f9f9f9;
+            transition: border 0.2s;
+            margin-bottom: 1rem;
+        }
+        .order-form input:focus,
+        .order-form textarea:focus {
+            border-color: #1a1a1a;
+            outline: none;
+            background: #fff;
+        }
+        .order-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .order-form button {
+            padding: 12px 30px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .order-form button:hover {
+            background: #333;
+        }
+        .order-form .form-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* ----- Контакты ----- */
+        #contacts {
+            background: transparent;
+            padding-bottom: 80px;
+        }
+        .contacts-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.6);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+        .contacts-flex .socials a {
+            display: inline-block;
+            margin-right: 1.5rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 400;
+            border-bottom: 1px solid transparent;
+            transition: border 0.2s;
+            padding-bottom: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+        .contacts-flex .socials a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+        .contacts-flex .contact-details p {
+            font-weight: 300;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .contacts-flex .contact-details a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.2s;
+        }
+        .contacts-flex .contact-details a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+
+        footer {
+            background: transparent;
+            border-top: 1px solid #d0d0d0;
+            padding: 20px 0;
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Адаптив */
+        @media (max-width: 992px) {
+            #about .bio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            #about .bio-image .portrait {
+                max-width: 260px;
+                margin: 0 auto;
+            }
+            .about-info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(255,255,255,0.95);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid #d0d0d0;
+                gap: 1rem;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero-text h1 {
+                font-size: 4rem;
+            }
+            .hero-sub .subhead {
+                font-size: 1.3rem;
+            }
+            .hero-sub .subhead2 {
+                font-size: 1rem;
+            }
+            .hero-wrapper {
+                border-radius: 0;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+            .about-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .contacts-flex {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .about-statement, .about-info-grid, .contacts-flex {
+                padding: 1.5rem;
+            }
+            .modal {
+                padding: 1.5rem;
+            }
+            .modal-title {
+                font-size: 1.3rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .hero-sub .subhead {
+                font-size: 1.1rem;
+            }
+            .hero-sub .subhead2 {
+                font-size: 0.9rem;
+            }
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            #about .bio-image .portrait {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка -->
+<header>
+    <div class="container">
+        <a href="#traumara" class="logo">травмарама</a>
+        <button class="hamburger" id="menuToggle" aria-label="Меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#catalog">каталог</a></li>
+                <li><a href="#about">обо мне</a></li>
+                <li><a href="#portfolio-anchor">портфолио</a></li>
+                <li><a href="#contacts">контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Главный блок -->
+<section id="traumara">
+    <div class="container">
+        <div class="hero-wrapper">
+            <img src="https://lfdrive.ru/f/Q5lLNTob" alt="Алиса Травмарама" width="1933" height="760">
+            <div class="hero-text">
+                <h1>травмарама</h1>
+            </div>
+        </div>
+        <div class="hero-sub">
+            <div class="subhead">Алиса Травмарама</div>
+            <div class="subhead2">Санкт-Петербург, Россия</div>
+        </div>
+    </div>
+</section>
+
+<!-- Обо мне -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">обо мне</h2>
+        <div class="bio-grid">
+            <div class="bio-image">
+                <div class="portrait">
+                    <img src="https://lfdrive.ru/f/6Web8ZSD" alt="Фото Алисы Травмарамы" width="320" height="427">
+                </div>
+            </div>
+            <div class="bio-text">
+                <p><strong>Алиса Травмарама</strong> родилась в 2005 году в Красноярске. Алиса работает в техниках живописи и аналогового коллажа. Летом 2025 года создала первую серию коллажей, в которой исследует человеческую природу и взаимодействие человека с духовными материями. Выставка августа 2025 года «Семейное положение: Всё сложно» в Красноярске стала отправной точкой для всех последующих работ художницы на эту тему, так как представленные работы отражали личную боль и переосмысление собственного жизненного опыта.</p>
+                <p>С 2023 года Алиса учится в Санкт-Петербурге на направлении «Декоративно-прикладное искусство и народные промыслы». Участвовала в групповых выставках в Красноярске и Санкт-Петербурге.</p>
+                <p>Работы находятся в частных коллекциях в России. На данный момент живёт и работает в Санкт-Петербурге.</p>
+                <a href="#catalog" class="btn-catalog">смотреть каталог</a>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="portfolio-anchor">портфолио</h2>
+
+        <div class="about-statement">
+            <h3>Artist Statement</h3>
+            <p>В своём творчестве я исследую тему человеческой природы и взаимодействия человека с духовными материями, находящимися в незримом диалоге с ним. Мне интересно показывать, насколько человек может быть многогранен, какие мысли и чувства он переживает. Мне нравится искать ответы на вопросы, касающиеся поведения людей, внутреннего мироощущения, состояний, в которых они находятся или в которые сами себя вводят.</p>
+            <p>Основная техника моих работ — живопись и коллаж. Эта техника интересна своей спонтанностью, в которой таится глубинная искренность. Сначала я придумываю текстуру и цвет фона, а только потом, отдельно от холста, ищу пластику. Я не использую ножницы и не ищу композицию заранее. Отрывая хаотичные полосы и куски бумаги, я смотрю на получившиеся изгибы и ищу в них сходство с человеческими телами. Такой подход позволяет создавать произведения, отражающие мои состояния, искать необычные композиционные решения и оставлять простор для художественного выражения.</p>
+            <p>В моих работах важно понимать, что моё признание — лишь одна из интерпретаций действительности. Мое исследование заключается в наблюдении за людьми, попытке заглянуть в их внутренний мир, может быть, если не понять, то почувствовать смутные движения нашей собственной души.</p>
+        </div>
+
+        <div class="mediums-line">Медиумы: живопись, коллаж, текстиль</div>
+
+        <div class="about-info-grid">
+            <div>
+                <h4>Групповые выставки</h4>
+                <ul>
+                    <li><span class="year">2026</span> – «Пространство чувств» – Галерея «Мольберт» – Санкт-Петербург – Россия – Куратор Мира Михаил</li>
+                    <li><span class="year">2025</span> – «Семейное положение: Все сложно» – МТБЦ «Пилот» Галерея – Красноярск – Россия – Кураторы Александр Сазонов, Анастасия Королева.</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Арт-Резиденция</h4>
+                <ul>
+                    <li><span class="year">2025 – настоящее время</span> – Творческая мастерская «Отражение» – Санкт-Петербург – Россия – Куратор Софья Ткачук. Выставка готовится</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Образование</h4>
+                <ul>
+                    <li>СПбГУПТД Сентябрь 2023 – настоящее время<br>Бакалавриат, Декоративно-прикладное искусство и народные промыслы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Каталог -->
+<section id="catalog">
+    <div class="container">
+        <h2 class="section-title">каталог</h2>
+        <div class="gallery" id="gallery"></div>
+    </div>
+</section>
+
+<!-- Модальное окно -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-image">
+            <img id="modalImg" src="" alt="Работа">
+        </div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-details" id="modalDetails"></div>
+        <div class="modal-price" id="modalPrice"></div>
+
+        <!-- Форма заказа с вашим ID -->
+        <div class="order-form">
+            <h3>Заказать работу</h3>
+            <form id="orderForm" action="https://formspree.io/f/xdenwpag" method="POST">
+                <label for="orderName">Имя</label>
+                <input type="text" id="orderName" name="name" required placeholder="Ваше имя">
+
+                <label for="orderContact">Email или телефон</label>
+                <input type="text" id="orderContact" name="contact" required placeholder="email@example.com или +7 900 123 45 67">
+
+                <label for="orderCity">Город</label>
+                <input type="text" id="orderCity" name="city" placeholder="Ваш город">
+
+                <label for="orderComment">Комментарий</label>
+                <textarea id="orderComment" name="comment" placeholder="Дополнительная информация"></textarea>
+
+                <input type="hidden" name="work_title" id="workTitleHidden" value="">
+
+                <button type="submit">Отправить заявку</button>
+                <div class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой данных.</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Контакты -->
+<section id="contacts">
+    <div class="container">
+        <h2 class="section-title">контакты</h2>
+        <div class="contacts-flex">
+            <div class="socials">
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Telegram</a>
+            </div>
+            <div class="contact-details">
+                <p>Номер телефона: <a href="tel:+79504088664">+7 950 408 86 64</a> (telegram)</p>
+                <p>Email: <a href="mailto:alisaakulova0933@gmail.com">alisaakulova0933@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">© 2026 Алиса Травмарама</div>
+</footer>
+
+<script>
+    // Данные о работах
+    const works = [
+        {
+            title: '"любовь"',
+            details: 'холст, масло, коллаж 40x50 см 2026',
+            price: '20 000 р',
+            img: 'https://lfdrive.ru/f/kVBqUmOE',
+            alt: 'Картина "любовь"'
+        },
+        {
+            title: '"дождь"',
+            details: 'холст, масло, коллаж 40x50 см 2026',
+            price: '20 000 р',
+            img: 'https://lfdrive.ru/f/Mp0rSCfe',
+            alt: 'Картина "дождь"'
+        },
+        {
+            title: 'без названия',
+            details: 'холст, масло, коллаж 30x40 см 2026',
+            price: '12 000 р',
+            img: 'https://lfdrive.ru/f/NCHWvgDf',
+            alt: 'Картина без названия'
+        },
+        {
+            title: 'без названия',
+            details: 'холст, масло, коллаж 30x40 см 2026',
+            price: '12 000 р',
+            img: 'https://lfdrive.ru/f/xiA6cZQU',
+            alt: 'Картина без названия'
+        },
+        {
+            title: 'диптих "дикие сердцем"',
+            details: 'холст, масло, коллаж 18x24 см 2026',
+            price: '10 000 р',
+            img: 'https://lfdrive.ru/f/nye1urDM',
+            alt: 'Картина диптих "дикие сердцем"',
+            isDiptych: true
+        },
+        {
+            title: '"зеленый мой любимый цвет"',
+            details: 'холст, масло, коллаж 30x40 см 2026',
+            price: '10 000 р',
+            img: 'https://lfdrive.ru/f/6K1tU0TH',
+            alt: 'Картина "зеленый мой любимый цвет"'
+        },
+        {
+            title: '"я рада, что ты больше не сможешь меня найти"',
+            details: 'холст, масло, коллаж 30x30 см 2026',
+            price: '10 000 р',
+            img: 'https://lfdrive.ru/f/fgj9pkQR',
+            alt: 'Картина "я рада, что ты больше не сможешь меня найти"'
+        }
+    ];
+
+    // Рендерим галерею
+    const gallery = document.getElementById('gallery');
+    works.forEach((work, index) => {
+        const item = document.createElement('div');
+        item.className = 'work-item';
+        if (work.isDiptych) item.classList.add('diptych');
+        item.dataset.index = index;
+
+        const placeholder = document.createElement('div');
+        placeholder.className = 'image-placeholder';
+        const img = document.createElement('img');
+        img.src = work.img;
+        img.alt = work.alt;
+        placeholder.appendChild(img);
+
+        const info = document.createElement('div');
+        info.className = 'info';
+        info.innerHTML = `
+            <div class="title">${work.title}</div>
+            <div class="details">${work.details}</div>
+            <div class="price">${work.price}</div>
+        `;
+
+        item.appendChild(placeholder);
+        item.appendChild(info);
+        gallery.appendChild(item);
+    });
+
+    // Модальное окно
+    const overlay = document.getElementById('modalOverlay');
+    const closeBtn = document.getElementById('modalClose');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalPrice = document.getElementById('modalPrice');
+    const workTitleHidden = document.getElementById('workTitleHidden');
+
+    function openModal(index) {
+        const work = works[index];
+        modalImg.src = work.img;
+        modalImg.alt = work.alt;
+        modalTitle.textContent = work.title;
+        modalDetails.textContent = work.details;
+        modalPrice.textContent = work.price;
+        workTitleHidden.value = work.title;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Клик по карточке
+    document.querySelectorAll('.work-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            openModal(index);
+        });
+    });
+
+    // Закрытие
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+    });
+
+    // Отправка формы через fetch (чтобы не уходить со страницы)
+    const form = document.getElementById('orderForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Спасибо! Ваша заявка отправлена.');
+                closeModal();
+                form.reset();
+            } else {
+                alert('Произошла ошибка, попробуйте позже или напишите нам напрямую.');
+            }
+        })
+        .catch(() => {
+            alert('Произошла ошибка, попробуйте позже или напишите нам напрямую.');
+        });
+    });
+
+    // Гамбургер-меню
+    const toggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    toggle.addEventListener('click', function() {
+        navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+    });
+</script>
+</body>
+</html>
