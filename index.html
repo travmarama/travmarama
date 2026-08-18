@@ -159,7 +159,7 @@
         /* ----- Главная ----- */
         #traumara {
             padding-top: 120px;
-            padding-bottom: 0; /* убрали лишний отступ */
+            padding-bottom: 0;
             text-align: center;
             border-bottom: none;
             background: transparent;
@@ -199,7 +199,7 @@
             letter-spacing: -0.02em;
         }
         .hero-sub {
-            margin-top: 2.5rem; /* отступ от фото */
+            margin-top: 2.5rem;
             margin-bottom: 0;
             text-align: center;
         }
@@ -219,12 +219,12 @@
 
         /* ----- Цитата ----- */
         #quote {
-            padding: 0; /* убираем внутренние отступы секции */
+            padding: 0;
             border-bottom: none;
         }
         .quote-block {
             max-width: 800px;
-            margin: 2.5rem auto; /* одинаковые отступы сверху и снизу */
+            margin: 2.5rem auto;
             padding: 2rem 2.5rem;
             background: rgba(255,255,255,0.5);
             border-left: 4px solid #1a1a1a;
@@ -239,11 +239,10 @@
             margin: 0;
         }
 
-        /* ----- Обо мне (увеличили верхний отступ) ----- */
+        /* ----- Обо мне ----- */
         #about {
-            padding-top: 2.5rem; /* отступ от цитаты */
+            padding-top: 2.5rem;
         }
-
         #about .bio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -697,7 +696,7 @@
         }
         @media (max-width: 480px) {
             .hero-text h1 {
-                font-size: 3.2rem;
+                font-size: 2.5rem; /* Уменьшили с 3.2rem */
             }
             .hero-sub .subhead {
                 font-size: 1.1rem;
@@ -714,6 +713,19 @@
             .quote-block {
                 padding: 1rem;
                 font-size: 0.9rem;
+                margin: 1.5rem auto;
+            }
+        }
+        /* Дополнительный медиа-запрос для совсем маленьких экранов */
+        @media (max-width: 380px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-sub .subhead {
+                font-size: 1rem;
+            }
+            .hero-sub .subhead2 {
+                font-size: 0.8rem;
             }
         }
     </style>
